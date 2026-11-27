@@ -14,9 +14,6 @@ if (!version) {
 
 const nextConfig: NextConfig = {
   output: 'export',
-
-  basePath: '/wp-rtl-plugins-demos',
-
   env: {
     NEXT_PUBLIC_APP_VERSION: version,
   },
