@@ -24,7 +24,6 @@ import {
   ArrowUpLeft,
   ArrowUpRight,
   Calculator,
-  Check,
   CheckCircle2,
   ChevronDown,
   CircleHelp,
@@ -68,10 +67,12 @@ import {
   Sparkles,
   Star,
   Store,
+  TrendingUp,
   Truck,
   Type,
   Undo2,
   Upload,
+  Users,
   WandSparkles,
   X
 } from "lucide-react";
@@ -441,7 +442,7 @@ function SectionHeading({
       </h2>
 
       <p
-        className={`mx-auto mt-5 max-w-2xl text-sm leading-9 md:text-base ${
+        className={`mx-auto mt-5 max-w-3xl text-sm leading-9 md:text-base ${
           dark ? "text-slate-400" : "text-slate-600"
         }`}
       >
@@ -848,7 +849,7 @@ function TrustTicker() {
       <div className="flex gap-1.5">
         {trustStats.map((stat, index) => (
           <button
-            key={"trustStats"+index}
+            key={"trustStats" + index}
             type="button"
             onClick={() => setActive(index)}
             aria-label={stat.label}
@@ -1013,11 +1014,12 @@ function DemosSection() {
               دموی <Accent>نسخه اصلی</Accent> را ببینید
             </>
           }
-          description="دموهای زیر مربوط به نسخه اصلی و انگلیسی Lumise هستند."
+          description="دموهای زیر مربوط به نسخه اصلی و انگلیسی افزونه لومیس هستند. شما می‌توانید به‌راحتی وارد این دموها شوید و پیش از خرید، با محیط کلی، امکانات و تجربه کاربری افزونه آشنا شوید."
         />
 
         {/* Compact notice */}
-        <div className="mx-auto mt-5 mb-7 flex max-w-3xl items-start gap-3 rounded-2xl border border-violet-100 bg-violet-50/70 p-4">
+        <div
+          className="mx-auto mt-5 mb-7 flex max-w-3xl items-start gap-3 rounded-2xl border border-violet-100 bg-violet-50/70 p-4">
           <Info
             size={19}
             className="mt-0.5 shrink-0 text-violet-600"
@@ -1044,7 +1046,7 @@ function DemosSection() {
                   href={demo.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  whileHover={{ y: -4 }}
+                  whileHover={{y: -4}}
                   className="group flex h-full flex-col overflow-hidden rounded-2xl border border-violet-100 bg-white shadow-sm transition-all duration-300 hover:border-violet-200 hover:shadow-lg hover:shadow-violet-100/60"
                 >
                   {/* Browser bar */}
@@ -1053,9 +1055,9 @@ function DemosSection() {
                     className="flex items-center gap-2 border-b border-slate-100 bg-slate-50/80 px-3 py-2"
                   >
                 <span className="flex gap-1">
-                  <span className="h-2 w-2 rounded-full bg-rose-300" />
-                  <span className="h-2 w-2 rounded-full bg-amber-300" />
-                  <span className="h-2 w-2 rounded-full bg-emerald-300" />
+                  <span className="h-2 w-2 rounded-full bg-rose-300"/>
+                  <span className="h-2 w-2 rounded-full bg-amber-300"/>
+                  <span className="h-2 w-2 rounded-full bg-emerald-300"/>
                 </span>
 
                     <span className="truncate rounded-md bg-white px-2 py-1 text-[10px] text-slate-400">
@@ -1065,8 +1067,9 @@ function DemosSection() {
 
                   <div className="flex flex-1 flex-col p-5">
                     <div className="mb-4 flex items-center justify-between">
-                  <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-violet-50 text-violet-600 transition-colors group-hover:bg-violet-600 group-hover:text-white">
-                    <Icon size={22} />
+                  <span
+                    className="flex h-11 w-11 items-center justify-center rounded-xl bg-violet-50 text-violet-600 transition-colors group-hover:bg-violet-600 group-hover:text-white">
+                    <Icon size={22}/>
                   </span>
 
                       <span
@@ -1092,7 +1095,8 @@ function DemosSection() {
                       {demo.description}
                     </p>
 
-                    <div className="mt-4 flex items-center gap-2 border-t border-slate-100 pt-3 text-xs font-extrabold text-violet-700">
+                    <div
+                      className="mt-4 flex items-center gap-2 border-t border-slate-100 pt-3 text-xs font-extrabold text-violet-700">
                       مشاهده دمو آنلاین
                       <ArrowUpLeft
                         size={15}
@@ -1107,7 +1111,7 @@ function DemosSection() {
         </div>
 
       </div>
-    </section>  );
+    </section>);
 }
 
 // ---------------------------------------------------------------------------
@@ -1267,8 +1271,17 @@ function ProductsSection() {
             <li key={item}>
               <Reveal delay={i * 0.025}>
                 <motion.span
-                  whileHover={{y: -4, scale: 1.03}}
-                  className="block rounded-full border border-violet-100 bg-white px-5 py-3 text-xs font-bold text-slate-700 shadow-sm transition-colors hover:border-violet-300 hover:text-violet-700"
+                  whileHover={{y: -5, scale: 1.06}}
+                  whileTap={{scale: 0.96}}
+                  className="
+            block cursor-pointer rounded-full
+            bg-violet-100 from-violet-50 via-purple-50 to-fuchsia-100
+            px-5 py-3
+            text-xs font-bold tracking-wide text-violet-700
+            shadow-[0_4px_15px_rgba(139,92,246,0.10)]
+            transition-all duration-300 ease-out
+            hover:shadow-[0_8px_25px_rgba(139,92,246,0.30)]
+          "
                 >
                   {item}
                 </motion.span>
@@ -1634,68 +1647,105 @@ function AddonsSection() {
 
 function TrustSection() {
   const numbers = [
-    {number: "13,522", label: "فروش در CodeCanyon"},
+    {number: "+13,000", label: "فروش در CodeCanyon"},
     {number: "4.79", label: "امتیاز محصول از ۵"},
     {number: "907", label: "رأی ثبت‌شده"},
-    {number: "3K+", label: "کامنت و دیدگاه"},
+    {number: "+3,000", label: "کامنت و دیدگاه"},
   ];
 
   return (
-    <section aria-labelledby="trust-title" className="bg-[#F6F3FF] py-24 md:py-28">
+    <section aria-labelledby="trust-title" className="relative overflow-hidden bg-violet-500 py-24 md:py-28">
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
         <Reveal>
           <div
-            className="relative overflow-hidden rounded-[34px] bg-gradient-to-br from-[#2A1659] via-[#1A1036] to-[#0F0B22] px-6 py-14 shadow-[0_40px_90px_-40px_rgba(76,29,149,0.7)] md:px-14">
+            className="relative isolate overflow-hidden rounded-[36px] border border-white/10 bg-gradient-to-br from-[#2B1959] via-[#1A1038] to-[#100B25] px-6 py-14 shadow-[0_35px_100px_-35px_rgba(76,29,149,0.55)] md:px-14 md:py-16">
+
+            {/* Background decorations */}
             <div aria-hidden
-                 className="pointer-events-none absolute -right-20 -top-32 h-80 w-80 rounded-full bg-violet-500/25 blur-[100px]"/>
+                 className="pointer-events-none absolute -right-32 -top-40 h-96 w-96 rounded-full bg-violet-500/20 blur-[110px]"/>
             <div aria-hidden
-                 className="pointer-events-none absolute -bottom-40 -left-20 h-80 w-80 rounded-full bg-fuchsia-500/20 blur-[100px]"/>
+                 className="pointer-events-none absolute -bottom-40 -left-20 h-96 w-96 rounded-full bg-fuchsia-500/15 blur-[110px]"/>
+            <div aria-hidden
+                 className="pointer-events-none absolute inset-0 opacity-[0.035] [background-image:radial-gradient(#fff_1px,transparent_1px)] [background-size:24px_24px]"/>
 
             <div className="relative">
-              <div className="mb-10 text-center">
+              {/* Header */}
+              <div className="mb-14 text-center">
                 <div
                   dir="ltr"
-                  className="mb-5 inline-flex items-center gap-2 rounded-full border border-emerald-300/20 bg-emerald-300/[0.07] px-4 py-2 text-[10px] font-black text-emerald-300"
+                  className="mb-6 inline-flex items-center gap-2.5 rounded-full border border-emerald-300/20 bg-emerald-300/[0.08] px-5 py-2.5 text-[10px] font-black tracking-[1.5px] text-emerald-300 shadow-[0_0_25px_rgba(52,211,153,0.07)]"
                 >
-                  <ShieldCheck size={15}/>
-                  TRUSTED IN THE GLOBAL MARKET
+                  <ShieldCheck size={16}/>
+                  TRUSTED WORLDWIDE
+                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 shadow-[0_0_10px_#34D399]"/>
                 </div>
-                <h2 id="trust-title" className="text-2xl font-black leading-[1.8] text-white md:text-4xl">
+
+                <h2
+                  id="trust-title"
+                  className="text-2xl font-black leading-[1.8] text-white md:text-4xl"
+                >
                   اعتماد جهانی، با اعداد واقعی
                 </h2>
-                <p className="mt-4 text-xs leading-8 text-slate-400">
-                  اطلاعات ثبت‌شده در صفحه محصول Lumise در CodeCanyon
+
+                <p className="mx-auto mt-4 max-w-lg text-xs leading-8 text-violet-200/60 md:text-sm">
+                  نگاهی به آمار و عملکرد افزونه لومیس در بازار جهانی
                 </p>
+
+                <div
+                  className="mx-auto mt-7 h-1 w-16 rounded-full bg-gradient-to-r from-violet-400 via-fuchsia-400 to-emerald-300"/>
               </div>
 
-              <dl className="grid grid-cols-2 gap-8 md:grid-cols-4">
-                {numbers.map((item) => (
-                  <div key={item.label} className="flex flex-col-reverse text-center">
-                    <dt className="mt-3 text-[11px] font-semibold text-violet-200/70">{item.label}</dt>
-                    <dd dir="ltr" className="text-3xl font-black tracking-tight text-white md:text-4xl">
-                      {item.number}
-                    </dd>
-                  </div>
-                ))}
+              {/* Statistics */}
+              <dl className="grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-5">
+                {numbers.map((item, index) => {
+                  const icons = [Users, ShoppingBag, Star, TrendingUp];
+                  const Icon = icons[index % icons.length];
+
+                  return (
+                    <div
+                      key={item.label}
+                      className="group relative flex flex-col items-center overflow-hidden rounded-[24px] border border-white/[0.09] bg-white/[0.045] px-3 py-7 text-center backdrop-blur-md transition-all duration-300 hover:-translate-y-2 hover:border-violet-300/30 hover:bg-white/[0.09] hover:shadow-[0_15px_40px_-15px_rgba(139,92,246,0.3)] md:px-5 md:py-9"
+                    >
+                      {/* Card glow */}
+                      <div
+                        className="pointer-events-none absolute -right-8 -top-8 h-24 w-24 rounded-full bg-violet-500/10 blur-2xl transition-all duration-300 group-hover:bg-violet-400/25"/>
+
+                      <div
+                        className="relative mb-5 flex h-12 w-12 items-center justify-center rounded-2xl border border-violet-300/20 bg-gradient-to-br from-violet-400/20 to-fuchsia-400/10 text-violet-200 transition-all duration-300 group-hover:scale-110 group-hover:border-violet-300/40 group-hover:text-white">
+                        <Icon size={22} strokeWidth={1.8}/>
+                      </div>
+
+                      <dd dir="ltr" className="text-3xl font-black tracking-tight text-white md:text-4xl">
+                        {item.number}
+                      </dd>
+
+                      <dt className="mt-3 text-[10px] font-bold leading-6 text-violet-200/70 md:text-xs">
+                        {item.label}
+                      </dt>
+
+                      <div
+                        className="mt-5 h-px w-10 bg-gradient-to-r from-transparent via-violet-400/50 to-transparent transition-all duration-300 group-hover:w-16"/>
+                    </div>
+                  );
+                })}
               </dl>
+
+              {/* Footer */}
+              <div
+                className="mt-10 flex flex-wrap items-center justify-center gap-3 border-t border-white/[0.08] pt-7 text-center">
+                <div className="flex items-center gap-2 text-[10px] font-medium text-violet-200/50">
+                  <ShieldCheck size={14} className="text-emerald-300"/>
+                  اطلاعات ثبت‌شده در صفحه محصول Lumise
+                </div>
+                <span className="hidden h-1 w-1 rounded-full bg-violet-400/40 md:block"/>
+                <div className="flex items-center gap-2 text-[10px] font-medium text-violet-200/50">
+                  <Globe2 size={14} className="text-violet-300"/>
+                  CodeCanyon Marketplace
+                </div>
+              </div>
             </div>
           </div>
         </Reveal>
-
-        {/*<div className="mt-5 grid gap-4 md:grid-cols-2">*/}
-        {/*  <div className="rounded-2xl border border-violet-100 bg-white p-5 text-center">*/}
-        {/*    <p dir="ltr" className="text-2xl font-black text-emerald-600">6,500+</p>*/}
-        {/*    <p className="mt-2 text-xs text-slate-500">مشتریان اعلام‌شده در سایت رسمی Lumise</p>*/}
-        {/*  </div>*/}
-        {/*  <div className="rounded-2xl border border-violet-100 bg-white p-5 text-center">*/}
-        {/*    <p dir="ltr" className="text-2xl font-black text-emerald-600">1,000+</p>*/}
-        {/*    <p className="mt-2 text-xs text-slate-500">سفارش روزانه ایجادشده، طبق اعلام سایت رسمی</p>*/}
-        {/*  </div>*/}
-        {/*</div>*/}
-
-        {/*<p className="mt-5 text-center text-[10px] leading-7 text-slate-400">*/}
-        {/*  آمار دو منبع مستقل هستند و نباید با یکدیگر جمع زده شوند. اعداد ممکن است با به‌روزرسانی صفحات رسمی تغییر کنند.*/}
-        {/*</p>*/}
       </div>
     </section>
   );
