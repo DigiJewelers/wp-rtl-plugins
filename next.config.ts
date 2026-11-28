@@ -12,7 +12,14 @@ if (!version) {
   throw new Error("Application version not found in package.json");
 }
 
-const nextConfig: NextConfig = { 
+const nextConfig: NextConfig = {
+  images: {
+    remotePatterns: [
+      { protocol: "https", hostname: "lumise.com" },
+      { protocol: "https", hostname: "s3.envato.com" },
+      { protocol: "https", hostname: "market-resized.envatousercontent.com" },
+    ],
+  },
   env: {
     NEXT_PUBLIC_APP_VERSION: version,
   },
