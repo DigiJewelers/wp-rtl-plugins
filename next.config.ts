@@ -12,14 +12,9 @@ if (!version) {
   throw new Error("Application version not found in package.json");
 }
 
-const nextConfig: NextConfig = {
-  output: 'export',
+const nextConfig: NextConfig = { 
   env: {
     NEXT_PUBLIC_APP_VERSION: version,
-  },
-
-  images: {
-    unoptimized: true,
   },
 }
 
